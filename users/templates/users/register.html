@@ -1,0 +1,10 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+{%block sidebar %}{% endblock sidebar%}
+{% block content %}
+<form class="form" method="post">
+  {% csrf_token %}
+  {{form|crispy}}
+  <input type="submit" class="btn btn-primary" value="Register">
+</form>
+{% endblock content%}

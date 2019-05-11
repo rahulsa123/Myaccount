@@ -1,0 +1,9 @@
+{% extends 'account/home.html'%}
+{%block sidebar %}{% endblock sidebar%}
+{% block content %}
+<h2>You logout</h2>
+<div class="container">
+  <h4>You want to log in again</h4>
+  <a href="{%url 'login'%}">Login</a>
+</div>
+{% endblock content%}

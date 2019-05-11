@@ -1,0 +1,12 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+{%block sidebar %}{% endblock sidebar%}
+{% block content %}
+<form class="form" method="post">
+  {% csrf_token %}
+  {{form|crispy}}
+  <input type="submit" class="btn btn-primary"  value="Login">
+</form>
+<h5 class="text-info mt-4" >
+<a class="text-primary" href="{% url 'register' %}">Register Yourself</a></h5>
+{% endblock content%}

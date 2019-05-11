@@ -1,0 +1,30 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+{%block sidebar %}{% endblock sidebar%}
+{% block content %}
+{% if u_form  and p_form %}
+<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border_bottom md-4">Profile Info</legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Update</button>
+			</div>
+</form>
+{% else %}
+<div class="container ">
+    <h3> first name </h3> : {{ request.user.first_name }}
+    <h3> last name </h3> : {{ request.user.last_name }}
+    <h3> Email </h3> : {{ request.user.email }}
+    <h3> image </h3> : <a href="{{ request.user.profile.image.url }}"> {{ request.user.profile.image.url }}</a>
+<form method="post" >
+    	{% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Edit Profile">
+</form>
+</div>
+{% endif %}
+
+{% endblock content%}

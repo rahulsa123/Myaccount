@@ -1,0 +1,37 @@
+body .navbar-brand {
+  color: #39dd86;
+}
+body .navbar-brand:hover {
+  color: #03ff5f;
+}
+body .nav-link {
+  color: #39dd86;
+}
+body .nav-link:hover {
+  color: #03ff5f;
+}
+body .navbar-nav li{
+  display: inline;
+}
+body .content-section li, h3 {
+  color: #2cadcf;
+}
+img {
+   border-radius: 20%;
+   margin-left:15px;
+    border-width: 15px;
+    border-style: inset;
+    animation-name: example;
+    animation-iteration-count: infinite;
+    animation-duration : 10s;
+}
+@keyframes example {
+  from {border-color: #00ffed;}
+  to {border-color: 0027ff;}
+}
+
+main a:hover {
+font-size :30px;
+text-shadow: 10px 10px 10px grey;
+text-decoration: none;
+}

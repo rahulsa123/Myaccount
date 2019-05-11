@@ -1,0 +1,42 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class ="text-info font-italic"> {{type|title}} Category</h2>
+<form class="form" method="post">
+  {% csrf_token %}
+  {{form|crispy}}
+  <input type="submit" class="btn btn-primary mb-4" value="Add {{type|title}} Category">
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th> S.no</th>
+                <th> {{type|title}} category name</th>
+                <th> {{type|title}} category Details </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for e in all_cat %}
+            {% if type  in 'expenses' %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{e.exp_catname}}</td>
+                <td>{{e.exp_catdetails}}</td>
+            </tr>
+            {% elif  type  in 'income' %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{e.inc_catname}}</td>
+                <td>{{e.inc_catdetails}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock content%}

@@ -1,0 +1,12 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class ="text-info font-italic"> {{type|title}} Category</h2>
+<form class="form" method="post">
+  {% csrf_token %}
+  {{form|crispy}}
+  <div id='form-errors'>{{ form_errors }}</div>
+  <input type="submit" class="btn btn-primary mb-4" value="Add {{type|title}}">
+</form>
+{% endblock content %}

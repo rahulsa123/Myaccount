@@ -1,0 +1,61 @@
+{% extends 'account/home.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST">
+    <h3 style="width:100%; text-align: center;" class="bg-dark text-primary" >{{type|title}} Book</h3>
+    {%csrf_token%}
+    {{ form|crispy}}
+    <input type="submit" class="btn btn-info mt-4 mb-3" value="Submit">
+</form>
+
+<table id="dataTable" class="table  table-hover">
+    <thead>
+        <tr>
+            <th>S.no</th>
+            <th>Account Name</th>
+            <th>Date</th>
+            <th>Pay/Receive</th>
+            <th>Amount</th>
+            <th>Remark</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% if data_income %}
+        <tr class="bg-secondary"><td colspan="6">Income</td></tr>
+            {% for income in data_income %}<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{income.inc_ac}}</td>
+                <td>{{income.tran_date}}</td>
+                <td>{{income.receiv_by}}</td>
+                <td>{{income.amount}}</td>
+                <td>{{income.remark}}</td>
+            </tr>
+            {%endfor%}
+        {% endif %}
+        {% if data_expenses %}
+            <tr class="bg-secondary"><td colspan="6">Expenses</td></tr>
+            {% for expense in data_expenses %}<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{expense.exp_ac}}</td>
+                <td>{{expense.tran_date}}</td>
+                <td>{{expense.pay_by}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.remark}}</td>
+            </tr>
+            {%endfor%}
+        {% endif %}
+    {% if total %}
+    <tr class="bg-secondary">
+        <th colspan="3" >
+            Total :
+        </th>
+        <th colspan="3">
+            {{total}}
+        </th>
+    </tr>
+    {%endif %}
+    </tbody>
+
+</table>
+{% endblock content %}
