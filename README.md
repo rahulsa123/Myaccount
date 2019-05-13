@@ -1,4 +1,4 @@
 # Myaccount
 Myaccount Django
-It is the same project which i upload on my reposiory named as BankSystem. 
+It is the same project which i upload on my repository as BankSystem.
 Here, I reupload it, using Django framework.
